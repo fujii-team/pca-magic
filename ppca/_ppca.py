@@ -23,6 +23,18 @@ class PPCA():
         return (X - self.means) / self.stds
 
     def fit(self, data, d=None, tol=1e-4, min_obs=10, verbose=False):
+        """
+        data: 2d-array
+            Data matrix, sized [sample_size, feature_size]
+        d: integer
+            Number of components
+        tol: float
+            tolerance for the PCA reconstruction
+        min_obs: integer
+            minimum observations.
+        whiten: bool
+            If True, we assume the data is already whitened.
+        """
 
         self.raw = data
         self.raw[np.isinf(self.raw)] = np.max(self.raw[np.isfinite(self.raw)])
