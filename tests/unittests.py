@@ -5,9 +5,9 @@ import numpy as np
 from ppca import PPCA
 
 
-class NaNTest(unittest.TestCase):
+class TestNaNTest(unittest.TestCase):
 
-    def remove_nan_test(self):
+    def test_remove_nan(self):
 
         N = 101
         k = 23
@@ -15,8 +15,8 @@ class NaNTest(unittest.TestCase):
         n_components = 3
 
         data = np.random.random((N, k))
-        for n in xrange(N):
-            for _k in xrange(k):
+        for n in range(N):
+            for _k in range(k):
                 if random.random() < p_nan:
                     data[n, _k] = np.nan
 
@@ -26,3 +26,7 @@ class NaNTest(unittest.TestCase):
         self.assertEqual(pca.data[np.isnan(pca.data)].shape, (0, ))
         self.assertEqual(pca.C.shape, (k, n_components))
         self.assertEqual(pca.transform().shape, (N, n_components))
+
+
+if __name__ == '__main__':
+    unittest.main()

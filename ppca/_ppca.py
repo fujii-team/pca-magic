@@ -45,7 +45,7 @@ class PPCA():
 
         if d is None:
             d = data.shape[1]
-        
+
         if self.C is None:
             C = np.random.randn(D, d)
         else:
@@ -86,7 +86,7 @@ class PPCA():
                 + np.trace(XX) - missing*np.log(ss0)
             diff = abs(v1/v0 - 1)
             if verbose:
-                print diff
+                print(diff)
             if (diff < tol) and (counter > 5):
                 break
 
@@ -131,7 +131,7 @@ class PPCA():
     def save(self, fpath):
 
         np.save(fpath, self.C)
-        
+
     def load(self, fpath):
 
         assert os.path.isfile(fpath)
